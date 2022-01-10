@@ -1,0 +1,18 @@
+<!ELEMENT bolaDeDragonZ (#PCDATA | personajes)*>
+<!ELEMENT personajes (buenos | malos | relleno)>
+<!ENTITY % perso "
+<!ATTLIST personaje
+    nombre CDATA #REQUIRED
+    tecnica ID #IMPLIED
+    movimiento IDREF #IMPLIED
+    tecnicasDefinitivas IDREFS #IMPLIED
+    transformacion CDATA #IMPLIED
+    estado (vivo | muerto | resucitado) #IMPLIED
+>
+">
+<!ELEMENT buenos (personaje+)>
+<!ELEMENT malos (personaje+)>
+<!ELEMENT relleno (personaje+, canon?)>
+<!ELEMENT personaje EMPTY>
+%perso;
+<!ATTLIST relleno saga CDATA #FIXED "más allá">

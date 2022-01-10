@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE bolaDeDragonZ SYSTEM "dragonBallZ.dtd">
+
+<bolaDeDragonZ>
+    Mundo de Dragon Ball Z
+    <personajes>
+        <buenos>
+            <personaje nombre="Goku" transformacion="Super Saiyan" tecnica="kamehameha" estado="vivo" movimiento="teletransporte" />
+            <personaje nombre="Vegeta" transformacion="Super Saiyan" tecnica="big_bang" estado="vivo" />
+            <personaje nombre="Yamcha" transformacion="Ninguna" estado="muerto" movimiento="kamehameha" />
+        </buenos>
+    </personajes>
+    <personajes>
+        <malos>
+            <personaje nombre="freezer" transformacion="Forma Final" estado="resucitado" tecnica="rayo_energia" />
+            <personaje nombre="Cell Perfecto" transformacion="Absorber Androides" tecnica="teletransporte" tecnicasDefinitivas="kamehameha rayo_energia big_bang" estado="muerto" />
+            <personaje nombre="Kid Buu" transformacion="maldad pura" tecnica="bola_de_energia" estado="muerto" />
+        </malos>
+    </personajes>
+    <personajes>
+        <relleno saga="más allá">
+            <personaje nombre="Paikuhan" transformacion="Super Paikuhan" tecnica="tornaDeFuego" estado="muerto" />
+        </relleno>
+    </personajes>
+</bolaDeDragonZ>

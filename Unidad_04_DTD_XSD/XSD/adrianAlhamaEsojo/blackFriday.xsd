@@ -1,0 +1,153 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="ofertasBlackFriday" type="tipoOfertaBlack" />
+
+    <xs:complexType name="tipoOfertaBlack">
+        <xs:sequence>
+            <xs:element name="articulo" minOccurs="1" maxOccurs="unbounded" type="tipoArticulo" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tipoArticulo" mixed="true">
+        <xs:sequence>
+            <xs:element name="fabricante" maxOccurs="unbounded" type="tipoFabricante" />
+            <xs:element name="oferta" maxOccurs="unbounded" type="tipoOferta" />
+            <xs:element name="valoraciones" maxOccurs="unbounded" type="tipoValoraciones" />
+            <xs:element name="preguntas" maxOccurs="unbounded" type="tipoPreguntas" />
+            <xs:element name="agregadoACestaDeCompra" maxOccurs="unbounded" type="tipoAgregadoACesta" />
+        </xs:sequence>
+        <xs:attribute name="codigo" type="xs:string" />
+    </xs:complexType>
+
+    <xs:complexType name="tipoFabricante">
+        <xs:choice>
+            <xs:element name="canon" />
+            <xs:element name="epson" />
+            <xs:element name="samsung" />
+            <xs:element name="apple" />
+            <xs:element name="philips" />
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="tipoOferta">
+        <xs:simpleContent>
+            <xs:extension base="contenidoOferta">
+                <xs:attribute name="precioHabitual" type="tipoPrecio" />
+                <xs:attribute name="descuento" type="tipoDescuento" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:simpleType name="contenidoOferta">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{2}.*\d{2}" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipoPrecio">
+        <xs:restriction base="xs:integer">
+            <xs:pattern value="\d{1,2}" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipoDescuento">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{1,2}%" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="tipoValoraciones">
+        <xs:all>
+            <xs:element name="positiva" type="campoValoracionesDerivado" />
+            <xs:element name="negativa" type="campoValoracionesDerivado" />
+            <xs:element name="masVotada" type="campoValoracionesDerivado" />
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="camposValoraciones">
+        <xs:sequence>
+            <xs:element name="autor" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="texto" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="campoValoracionesDerivado">
+        <xs:complexContent>
+            <xs:extension base="camposValoraciones">
+                <xs:sequence>
+                    <xs:element name="fecha" type="tipoFecha" minOccurs="0" maxOccurs="unbounded" />
+                    <xs:element name="respuestas" type="tipoRespuestas" minOccurs="0" maxOccurs="unbounded" />
+                </xs:sequence>
+                <xs:attribute name="votosFavorables" type="xs:integer" />
+                <xs:attribute name="votosDesfavorables" type="xs:integer" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:simpleType name="tipoFecha">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{2}[/]\d{2}[/]\d{4} \d{2}[:]\d{2}[:]\d{2} ((PM)|(AM))" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="tipoPreguntas">
+        <xs:sequence>
+            <xs:element name="pregunta" maxOccurs="unbounded" type="campoValoracionesDerivado" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tipoRespuestas">
+        <xs:sequence>
+            <xs:element name="respuesta" minOccurs="1" maxOccurs="unbounded" type="tipoRespuesta" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tipoRespuesta" mixed="true">
+        <xs:all>
+            <xs:element name="votantesEnPositivo" type="listaAutor" />
+            <xs:element name="votantesEnNegativo" type="listaAutor" />
+        </xs:all>
+        <xs:attribute name="autor" type="tipoAutor" />
+    </xs:complexType>
+
+    <xs:simpleType name="tipoAutor">
+        <xs:union memberTypes="autores autoras" />
+    </xs:simpleType>
+
+    <xs:simpleType name="autores">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Pedro" />
+            <xs:enumeration value="Álvaro" />
+            <xs:enumeration value="Javier" />
+            <xs:enumeration value="Gonzalo" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="autoras">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Araceli" />
+            <xs:enumeration value="Lucía" />
+            <xs:enumeration value="Silvia" />
+            <xs:enumeration value="Inma" />
+            <xs:enumeration value="Estela" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="listaAutor">
+        <xs:list itemType="tipoAutor" />
+    </xs:simpleType>
+
+    <xs:complexType name="tipoAgregadoACesta">
+        <xs:simpleContent>
+            <xs:extension base="agregadoCesta">
+                <xs:attribute name="value" type="xs:string" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:simpleType name="agregadoCesta">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="((lunes)|(martes)|(miércoles)|(jueves)|(viernes)|(sábado)|(domingo)) \d{1,2} \D{2} ((enero)|(febrero)|(marzo)|(abril)|(mayo)|(junio)|(julio)|(agosto)|(septiembre)|(octubre)|(noviembre)|(diciembre)) \D{2} \d{4}" />
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pelisDeMiedo SYSTEM "peliculaMiedo.dtd">
+
+<pelisDeMiedo>
+    Las mejores películas de terror
+    <year epoca="1980">
+        <pelicula nombre="El exorcista" personaje="Cura"/>
+        <puntuacion>
+            <positiva ranking="Es buena"/>
+        </puntuacion>    
+    </year>
+    <year epoca="1990">
+        <pelicula nombre="Pesadilla en Elm Street" personaje="FreddyKruegger"/>   
+        <pelicula nombre="El muñeco diabólico" personaje="Chucky" conoce="FamiliaDefeo FreddyKruegger"/>  
+        <puntuacion>
+            <positiva ranking="Es buena"/>
+        </puntuacion>
+        <puntuacion>
+            <negativa/>
+        </puntuacion> 
+    </year>
+    <year epoca="2000">
+        <pelicula nombre="Amitville" personaje="FamiliaDefeo" aparicion="EdYLorein"/>    
+        <puntuacion>
+            <positiva ranking="Es buena"/>
+        </puntuacion>
+    </year>
+    <year epoca="2021">
+        <pelicula nombre="Expediente Warren" personaje="EdYLorein"/>
+        <puntuacion>
+            <positiva ranking="Es buena"/>
+        </puntuacion>
+        <serie>El juego del Calamar</serie>    
+    </year>
+</pelisDeMiedo>

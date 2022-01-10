@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE musica SYSTEM "musica.dtd">
+<musica>
+    <artistas>
+        <nombre autor="ICE_CUBE">O'Shea Jackson</nombre>
+        <fecha nacimiento="1969"/>
+        <nacionalidad estado="EEUU14 ES34"/>
+    </artistas>
+    <canciones>
+        <nombreCancion>F*CK THE POLICE</nombreCancion>
+        <duracion tiempo="3:14"/>
+        <artista colabora="Zatu ICE_CUBE"/>
+    </canciones>
+    <nacionalidades>
+        <nombrePais>Estadounidense</nombrePais>
+        <codigo pais="EEUU14"/>
+    </nacionalidades>
+    <artistas>
+        <nombre autor="Zatu">Saturnino Rey</nombre>
+        <fecha nacimiento="1979"/>
+        <nacionalidad estado="ES34 EEUU14"/>
+    </artistas>
+    <canciones>
+        <nombreCancion>Cara B</nombreCancion>
+        <duracion tiempo="2:30"/>
+        <artista colabora="ICE_CUBE Zatu"/>
+    </canciones>
+    <nacionalidades>
+        <nombrePais>Española</nombrePais>
+        <codigo pais="ES34"/>
+    </nacionalidades>
+</musica>

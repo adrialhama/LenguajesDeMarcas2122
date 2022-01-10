@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="usuario">
+        <xs:complexType>
+            <xs:all>
+                <xs:element name="ultimasSesiones" type="tipoSesiones"/>
+                <xs:element name="marcadores"/>
+                <xs:element name="mensajes"/>
+            </xs:all> <!-- Rafa -->
+            <xs:attribute name="id" type="tipoCorreo"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="tipoCorreo">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\w+@\w+[.]\w+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="tipoSesiones">
+        <xs:sequence>
+            <xs:element name="sesion" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

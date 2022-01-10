@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE animales [
+    <!ENTITY aves "es un ave">
+    <!ELEMENT animales (#PCDATA | animal)*>
+    <!ELEMENT animal (vertebrados | invertebrados)>
+    <!ELEMENT vertebrados (mamiferos+, oviparos?)>
+    <!ELEMENT mamiferos EMPTY>
+    <!ATTLIST mamiferos
+        nombre CDATA #REQUIRED
+        caract CDATA #IMPLIED
+        patas CDATA #FIXED "4"
+        alimento IDREFS #REQUIRED
+    >
+    <!ELEMENT invertebrados (insectos*, oviparos*)>
+    <!ELEMENT insectos EMPTY>
+    <!ATTLIST insectos
+        alimentacion ID #REQUIRED
+        especie (araña | mosca | termita | saltamontes) #IMPLIED
+    >
+    <!ELEMENT oviparos (#PCDATA)>
+    <!ATTLIST oviparos comida IDREF #REQUIRED>
+]>
+
+<animales>
+    Tipos de animales
+    <animal>
+        <vertebrados>
+            <mamiferos nombre="elefante" caract="trompa" patas="4" alimento="carnivoro omnivoro" />
+            <mamiferos nombre="lobo" patas="4" alimento="carnivoro" />
+        </vertebrados>
+    </animal>
+    <animal>
+        <invertebrados>
+            <insectos especie="araña" alimentacion="carnivoro" />
+            <insectos especie="mosca" alimentacion="omnivoro" />
+            <oviparos comida="carnivoro">
+                Águila
+                &aves;
+            </oviparos>
+            <oviparos comida="omnivoro">Gallina</oviparos>
+        </invertebrados>
+    </animal>
+</animales>

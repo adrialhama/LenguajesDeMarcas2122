@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="tiendaMascotas" />
+
+    <!-- Tipo Tienda Mascotas-->
+
+    <xs:complexType name="tipoTienda">
+        <xs:sequence>
+            <xs:element name="reptiles" minOccurs="1" maxOccurs="unbounded" type="tipoReptiles" />
+            <xs:element name="mamiferos" minOccurs="1" maxOccurs="unbounded" type="tipoMamiferos" />
+            <xs:element name="unidadesMedida" minOccurs="1" maxOccurs="unbounded" type="xs:string" />
+            <xs:element name="direccion" minOccurs="1" maxOccurs="unbounded" type="xs:string" />
+            <xs:element name="clientes" minOccurs="1" maxOccurs="unbounded" type="xs:string" />
+        </xs:sequence>
+        <xs:attribute name="nombre" type="xs:string" />
+    </xs:complexType>
+
+    <!-- Tipo Reptiles -->
+
+    <xs:complexType name="tipoReptiles">
+        <xs:sequence>
+            <xs:element name="reptil" minOccurs="1" maxOccurs="unbounded" type="tipoReptil" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tipoReptil" mixed="true">
+        <xs:all>
+            <xs:element name="peso" minOccurs="0" type="tipoUnidad" />
+            <xs:element name="longitud" minOccurs="0" type="tipoUnidad" />
+            <xs:element name="edad" minOccurs="0" type="tipoUnidad" />
+        </xs:all>
+    </xs:complexType>
+
+    <!-- Tipo Mamíferos -->
+
+    <xs:complexType name="tipoMamiferos">
+        <xs:sequence>
+            <xs:element name="mamifero" minOccurs="1" maxOccurs="unbounded" type="tipoMamifero"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tipoMamifero" mixed="true">
+        <xs:all>
+            <xs:element name="nombre"/>
+            <xs:element name="raza"/>
+            <xs:element name="nombre"/>
+        </xs:all>
+    </xs:complexType>
+
+    <!--Lista de Unidades de Medida-->
+
+    <xs:complexType name="tipoUnidad" mixed="true">
+        <xs:attribute name="unidadMedida" type="listaUnidades" />
+    </xs:complexType>
+
+    <xs:simpleType name="listaUnidades">
+        <xs:list itemType="unionMedidas" />
+    </xs:simpleType>
+
+    <xs:simpleType name="unionMedidas">
+        <xs:union memberTypes="unidadesLongitud unidadesMasa unidadesTiempo" />
+    </xs:simpleType>
+
+    <xs:simpleType name="unidadesLongitud">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="mm" />
+            <xs:enumeration value="cm" />
+            <xs:enumeration value="dm" />
+            <xs:enumeration value="m" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="unidadesMasa">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="g" />
+            <xs:enumeration value="kg" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="unidadesTiempo">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="dias" />
+            <xs:enumeration value="meses" />
+            <xs:enumeration value="semanas" />
+        </xs:restriction>
+    </xs:simpleType>
+
+
+</xs:schema>

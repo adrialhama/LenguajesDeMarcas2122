@@ -1,0 +1,18 @@
+<!ELEMENT musica (artistas+ | canciones+ | nacionalidades+)* >
+<!ELEMENT artistas (nombre, fecha, nacionalidad) >
+<!ELEMENT nombre (#PCDATA)>
+<!ATTLIST nombre autor ID #REQUIRED>
+<!ELEMENT fecha EMPTY>
+<!ATTLIST fecha nacimiento CDATA #REQUIRED>
+<!ELEMENT nacionalidad EMPTY>
+<!ATTLIST nacionalidad estado IDREFS #IMPLIED >
+<!ELEMENT canciones (nombreCancion, duracion, artista) >
+<!ELEMENT nombreCancion (#PCDATA)>
+<!ELEMENT duracion EMPTY>
+<!ATTLIST duracion tiempo CDATA #REQUIRED>
+<!ELEMENT artista EMPTY>
+<!ATTLIST artista colabora IDREFS #IMPLIED>
+<!ELEMENT nacionalidades (nombrePais, codigo)>
+<!ELEMENT nombrePais (#PCDATA)>
+<!ELEMENT codigo EMPTY>
+<!ATTLIST codigo pais ID #REQUIRED>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE placaBase SYSTEM "placa.dtd">
+<placaBase>
+    <microprocesador>Intel core i7 5820K</microprocesador>
+    <memoria>256Gb</memoria>
+    <modelo>MSI X99</modelo>
+    <fabricante>
+        <asus/>
+        <intel/>
+    </fabricante>
+</placaBase>
